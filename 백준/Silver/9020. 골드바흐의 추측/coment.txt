@@ -1,0 +1,86 @@
+# 문제풀이
+num - half를 활용한 풀이이다
+
+num/2 를 소수인지 판별 한다. 
+half와 num-half가 소수이면 그냥 출력하고, 소수가 아니면 half를 더한다.
+half를 더하면서 소수가 되면 half를 출력하고, num-half도 출력을 하는 것이다.
+
+
+
+# 소감
+num이 주어졌을 때 
+num보다 작은 소수들을 prime_arr배열에 저장
+두수를 택하여 더한 수를 num과 비교하여 같을 때 소수들을 sum_arr에 각각 저장
+두 소수의 차를 비교하여 차가 가장 적은 것을 출력
+
+위 방법으로 했을 때, 변수가 많고 반복문도 많고 배열도 많아서 런타임에러가 뜬다.
+혼자서 생각할 수 있는 것이 없어서 참고를 하기로 했다.
+
+참고하고 난 풀이가 저것이다. 풀이가 정말 짧고 간단한데 저 생각을 못했다. 소수찾는 함수를 이용하고, 
+half 부터 시작해서 비교해나가는 방법이 기발한 것 같다. 
+
+
+
+# 잘못되 코드
+
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+int main()
+{
+	int T;
+	scanf(" %d", &T);
+	for (int i = 0; i < T; i++)
+	{
+		int num, prime_arr[100], idx = 0, sum, sum_arr[2][100], sum_idx1 = 0, sum_idx2 = 0;
+		scanf(" %d", &num);
+
+		// num보다 작은 소수를 배열에 저장.
+		for (int j = 2; j < num; j++)
+		{
+			int flag = 1;
+			for (int k = 2; k < j; k++)
+			{
+				if (j % k == 0)
+				{
+					flag = 0;
+				}
+			}
+			if (flag == 1)
+			{
+				prime_arr[idx++] = j;
+			}
+		}
+
+		// 두개를 택하여 더한 값을, 비교 후 합이 같으면 배열에 저장.
+		for (int j = 0; j < idx; j++)
+		{
+			for (int k = 0; k < idx; k++)
+			{
+				sum = prime_arr[j] + prime_arr[k];
+				
+				if (sum == num)
+				{
+					sum_arr[0][sum_idx1++] = prime_arr[j];
+					sum_arr[1][sum_idx2++] = prime_arr[k];
+				}
+			}
+			
+		}
+
+		// 두 수의 차가 적은 인덱스 위치 찾기.
+		int min_idx = 0, min = sum_arr[1][0] - sum_arr[0][0];
+		for (int j = 1; j < sum_idx1; j++)
+		{
+			if (sum_arr[1][j] - sum_arr[0][j] >= 0 && sum_arr[1][j] - sum_arr[0][j] < min)
+			{
+				min = sum_arr[1][j] - sum_arr[0][j];
+				min_idx = j;
+			}
+		}
+
+		printf("%d %d\n", sum_arr[0][min_idx], sum_arr[1][min_idx]);
+	}
+
+	return 0;
+}
