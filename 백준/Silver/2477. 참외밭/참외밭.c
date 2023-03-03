@@ -5,7 +5,7 @@ int crops, direction_length[6][2], direction_cnt[4], M_area = 1, m_area = 1;
 
 int main()
 {
-	
+	//int crops, direction_length[6][2], direction_cnt[4], M_area = 1, m_area = 1;
 	scanf(" %d", &crops);
 	for (int i = 0; i < 6; i++)
 	{
