@@ -1,7 +1,7 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 
-int crops, direction_length[6 + 2][2 + 2], direction_cnt[4], M_area = 1, m_area = 1;
+int crops, direction_length[6][2], direction_cnt[4], M_area = 1, m_area = 1;
 
 int main()
 {
