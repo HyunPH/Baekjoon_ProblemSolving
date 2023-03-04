@@ -1,20 +1,21 @@
 #define _CRT_SECURE_NO_WARNINGS
 #include <stdio.h>
 
-int crops, direction_length[6][2], direction_cnt[4], M_area = 1, m_area = 1;
-
 int main()
 {
-	//int crops, direction_length[6][2], direction_cnt[4], M_area = 1, m_area = 1;
+	int crops, direction_length[6][2], direction_cnt[4] = { 0 };
+	int M_area = 1, m_area = 1;
 	scanf(" %d", &crops);
+	
 	for (int i = 0; i < 6; i++)
 	{
 		scanf(" %d %d", &direction_length[i][0], &direction_length[i][1]);
-		direction_cnt[direction_length[i][0]]++;
+		direction_cnt[direction_length[i][0] - 1]++;
 	}
+	
 	for (int i = 0; i < 6; i++)
 	{
-		if (direction_cnt[direction_length[i][0]] == 1)
+		if (direction_cnt[direction_length[i][0] - 1] == 1)
 		{
 			M_area *= direction_length[i][1];
 			continue;
