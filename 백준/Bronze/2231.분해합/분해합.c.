@@ -1,0 +1,34 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include <stdio.h>
+
+
+int main()
+{
+	int N, min_M, temp_num, digits_sum;
+	scanf(" %d", &N);
+
+	min_M = N;
+	for (int i = N - 1; i > 0; i--)
+	{
+		temp_num = i;
+		digits_sum = 0;
+		while (temp_num)
+		{
+			digits_sum += temp_num % 10;
+			temp_num /= 10;
+		}
+		
+		if (N - i == digits_sum && i < min_M)
+		{
+			min_M = i;
+		}
+
+	}
+
+	if (min_M == N)
+		printf("0\n");
+	else
+		printf("%d\n", min_M);
+
+	return 0;
+}
