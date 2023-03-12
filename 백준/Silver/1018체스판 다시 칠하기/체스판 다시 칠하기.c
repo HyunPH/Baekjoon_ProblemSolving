@@ -4,9 +4,9 @@
 
 int main()
 {
-	int N, M, count = 0, min_count;
+	int N, M, count = 0, min_count = 3000;
 	char start;
-	char board[50][51], count_arr[2][43][43];
+	char board[50][51];
 
 	scanf(" %d %d", &N, &M);
 	for (int i = 0; i < N; i++)
@@ -37,24 +37,10 @@ int main()
 					}
 				}
 				//printf("k:%d eight_i:%d eight_j:%d count:%d\n", k, eight_i-8, eight_j-8, count);
-				count_arr[k][eight_i - 8][eight_j - 8] = count;
-			}
-		}
-	}
 
-	// 최소값 찾기
-	min_count = count_arr[0][0][0];
-	for (int k = 0; k < 2; k++)
-	{
-		for (int i = 0; i <= N - 8; i++)
-		{
-			for (int j = 0; j <= M - 8; j++)
-			{
-				//printf("k:%d i:%d j:%d count:%d\n", k, i, j, count_arr[k][i][j]);
-				if (count_arr[k][i][j] < min_count)
-				{
-					min_count = count_arr[k][i][j];
-				}
+				// 최소값 찾기
+				if (count < min_count)
+					min_count = count;
 			}
 		}
 	}
