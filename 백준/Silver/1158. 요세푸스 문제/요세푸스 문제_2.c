@@ -12,7 +12,7 @@ int main() {
         for (int j = 0; j < K; j++) { // K번 옆으로 옯겨가서 검사하기 위해.
             while (1) {
                 cur++;
-                printf("\ni:%d j:%d cur:%d check:%d\n", i, j, cur, !check[cur]);
+                //printf("\ni:%d j:%d cur:%d check:%d\n", i, j, cur, !check[cur]);
                 if (cur > N) cur = 1; // 사이클을 돌기위해. 8 --> 1
                 if (!check[cur]) break; // 이미 뺀 것이면, 반복 중단
             }
